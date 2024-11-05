@@ -1,0 +1,97 @@
+# Backend API
+
+
+
+This is a simple backend API built with Node.js and Express. It includes user authentication and CRUD operations for user management.
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v12 or higher)
+- MongoDB (you can use a local instance or MongoDB Atlas)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/yourproject.git
+   cd yourproject
+2. Install All Dependency 
+
+   npm install
+
+3. create env file 
+    JWT_SECRET=your_secret_key
+    MONGODB_URI=your_mongodb_connection_string
+
+4. run backend 
+    npm start
+
+5. API Endpoints
+   # Authentication
+    1. POST /api/auth/register
+
+    ->Register a new user.
+    Request Body:
+    json
+    Copy code
+   {
+  "name": "User Name",
+  "email": "user@example.com",
+  "phone": "1234567890",
+  "password": "yourpassword"
+  }
+   2. POST /api/auth/login
+
+    Log in a user and receive a token.
+    Request Body:
+    json
+    Copy code
+   {
+    "email": "user@example.com",
+    "password": "yourpassword"
+   }
+   Response:
+   json
+   Copy code
+   {
+     "token": "YOUR_JWT_TOKEN"
+   }
+   User Management
+   GET /api/users
+
+   3. Retrieve all users. (Requires Bearer token)
+   GET /api/users/
+
+   Retrieve a user by ID. (Requires Bearer token)
+  4. POST /api/users
+
+   Create a new user. (Requires Bearer token)
+   5. PUT /api/users/
+
+   6. DELETE /api/users/
+
+Delete a user by ID. (Requires Bearer token)
+Using Bearer Token for Authentication
+To access protected routes (e.g., user management routes), you need to include a Bearer token in the Authorization header of your requests.
+
+Example:
+Log in to obtain the token:
+
+Send a POST request to /api/auth/login with your email and password.
+The response will include a JWT token.
+Use the token in subsequent requests:
+
+Add the following header to your requests:
+makefile
+Copy code
+Authorization: Bearer YOUR_TOKEN_HERE
+Testing the API
+You can test the API using tools like Postman or cURL.
+
+To register a user, send a POST request to /api/auth/register.
+To log in and get a token, send a POST request to /api/auth/login.
+To access user management routes, include the Bearer token in the Authorization header.
+
+
